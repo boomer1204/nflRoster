@@ -35,7 +35,7 @@ var players = [],
     bills = [];
 const token = 'boomer1204 : boomer0746'
 fetch(endpoint, {
-    mode: "no-cors"
+    mode: "no-cors",
     headers: {
         Authorization: ` Basic token ${token}`
     }
