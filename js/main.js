@@ -1,13 +1,4 @@
-
-var myHeaders = new Headers({
-  'Authorization': 'Basic' + btoa(user + ":" + pass)
-});
-var myInit = {
-  method: 'GET',
-  headers: myHeaders,
-  mode: 'no-cors'
-};
-var endpoint = 'https://www.mysportsfeeds.com/api/feed/pull/nfl/2015-2016-regular/active_players.json';
+var endpoint = 'https://www.mysportsfeeds.com/api/feed/pull/nfl/2017-playoff/game_playbyplay.json?gameid=20170122-PIT-NE&teamstats=W,L,T,PF,PA&playerstats=Att,Comp,Yds,TD';
 var container = document.querySelector('.container');
 var players = [],
     cowboys = [],
@@ -42,8 +33,12 @@ var players = [],
     patriots = [],
     dolphins = [],
     bills = [];
-
-fetch(endpoint)
+const token = 'boomer1204 : boomer0746'
+fetch(endpoint, {
+    headers: {
+        Authorization: ` Basic token ${token}`
+    }
+})
   .then(blob => blob.json())
   .then(function(data, callback) {
     players.push(...data.rosterplayers.playerentry), players.forEach(function(player) {
